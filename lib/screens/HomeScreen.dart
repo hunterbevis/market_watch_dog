@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marketwatchdog/components/stockCard.dart';
+import 'package:marketwatchdog/services/server.dart';
 
 class HomeScreen extends StatefulWidget {
   // This widget is the root of your application.
@@ -10,6 +11,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  @override
+  void initState() {
+    super.initState();
+    print("get data called");
+    getData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
