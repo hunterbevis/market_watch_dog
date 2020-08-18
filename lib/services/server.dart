@@ -3,6 +3,7 @@ import 'package:http/http.dart';
 String myAPIKey = 'bsu3fpv48v6r5qhbp2ug';
 String stockTicker = "AAPL";
 //server code will start here
+
 void getData() async {
   Response response = await get('https://finnhub.io/api/v1/quote?symbol=$stockTicker&token=$myAPIKey');
   print(response.body);
