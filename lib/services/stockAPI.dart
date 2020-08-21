@@ -1,17 +1,34 @@
-import 'dart:convert';
-import 'package:http/http.dart' as http;
-import 'stock.dart';
+import 'package:http/http.dart';
+import 'computations.dart';
 
-class Webservice {
-  Future<List<Stock>> getStocks() async {
-    final url = "https://silicon-rhinoceros.glitch.me/stocks";
+String myAPIKey = 'bsu3fpv48v6r5qhbp2ug';
+String stockTicker = "AAPL";
 
-    final response = await http.get(url);
-    if (response.statusCode == 200) {
-      Iterable json = jsonDecode(response.body);
-      return json.map((stock) => Stock.fromJson(stock)).toList();
-    } else {
-      throw Exception("Error fetching stocks");
-    }
-  }
+void getData(String stockTicker) async {
+  Response response = await get('https://finnhub.io/api/v1/quote?symbol=$stockTicker&token=$myAPIKey');
+  print(response.body);
 }
+
+//Example api output below
+/*
+Example json return:
+{"c":462.25,"h":464,"l":456.03,"o":457.41,"pc":458.43,"t":1597783907}
+
+Meanings:
+
+o
+Open price of the day
+
+h
+High price of the day
+
+l
+Low price of the day
+
+c
+Current price
+
+pc
+Previous close price
+
+* */

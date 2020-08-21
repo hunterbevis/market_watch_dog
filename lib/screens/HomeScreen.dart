@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:marketwatchdog/components/stockCard.dart';
-import 'package:marketwatchdog/services/server.dart';
+import 'package:marketwatchdog/services/stockAPI.dart';
 
 class HomeScreen extends StatefulWidget {
   // This widget is the root of your application.
@@ -15,7 +15,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     print("get data called");
-    getData();
+    getData('AAPL');
   }
 
   @override
@@ -53,7 +53,7 @@ class _HomeScreenContentsState extends State<HomeScreenContents> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               StockCard(
-                stockTicker: "ticker 1",
+                stockTicker: "Apple",
               ),
               StockCard(
                 stockTicker: "ticker 2",
