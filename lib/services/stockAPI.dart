@@ -1,13 +1,40 @@
-import 'package:http/http.dart';
-import 'computations.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
-String myAPIKey = 'bsu3fpv48v6r5qhbp2ug';
-String stockTicker = "AAPL";
+const String myAPIKey = 'bsu3fpv48v6r5qhbp2ug';
 
-void getData(String stockTicker) async {
-  Response response = await get('https://finnhub.io/api/v1/quote?symbol=$stockTicker&token=$myAPIKey');
-  print(response.body);
-}
+class StockProfile {
+  //fields
+  String stockTicker;
+  var openPrice;
+  var highPrice;
+  var lowPrice;
+  var currentPrice;
+  var previousClose;
+
+  //constructors
+  StockProfile(String stockTicker) {
+    this.stockTicker = stockTicker;
+    getData(stockTicker);
+  }
+  //functions
+  void getData(String stockTicker) async {
+    http.Response response = await http.get('https://finnhub.io/api/v1/quote?symbol=$stockTicker&token=$myAPIKey');
+
+    if (response.statusCode == 200) {
+      String data = response.body;
+      var decodedData = jsonDecode(data);
+
+      this.currentPrice = decodedData['c'];
+      this.openPrice = decodedData['o'];
+      this.highPrice = decodedData['h'];
+      this.lowPrice = decodedData['l'];
+      this.previousClose = decodedData['pc'];
+    } else {
+      print(response.statusCode);
+    }
+  } //end of getData
+} //end of Class
 
 //Example api output below
 /*

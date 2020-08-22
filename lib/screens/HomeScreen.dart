@@ -15,7 +15,8 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     print("get data called");
-    getData('AAPL');
+    StockProfile Apple = new StockProfile('AAPL');
+    print(Apple.openPrice);
   }
 
   @override
@@ -53,7 +54,7 @@ class _HomeScreenContentsState extends State<HomeScreenContents> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               StockCard(
-                stockTicker: "Apple",
+                stockTicker: "AAPL",
               ),
               StockCard(
                 stockTicker: "ticker 2",
