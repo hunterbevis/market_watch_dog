@@ -32,7 +32,7 @@ class _StockCardState extends State<StockCard> {
             ListTile(
               leading: Icon(Icons.album),
               title: Text('${widget.stockTicker}'),
-              subtitle: Text('$subtitleText'),
+              subtitle: Text('some tasddf;alksdjf ;alskdjf ;asldkfj'),
             ),
             ButtonBar(
               children: <Widget>[
