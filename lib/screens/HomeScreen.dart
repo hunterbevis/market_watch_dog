@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:marketwatchdog/components/stockCard.dart';
 import 'package:marketwatchdog/services/stockAPI.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class HomeScreen extends StatefulWidget {
   // This widget is the root of your application.
@@ -14,64 +16,239 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
     super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
+
+    return Scaffold(
+      body: Stack(
+        children: <Widget>[
+          Container(
+            height: size.height * .30,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                alignment: Alignment.topCenter,
+                fit: BoxFit.fill,
+                image: AssetImage('assets/images/green_to_orange_gradient_background.jpg'),
+              ),
+            ),
+          ),
+          SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    margin: EdgeInsets.only(bottom: size.height * .20),
+                    height: 64,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        //TODO: Add something up in this top colored header space
+                        Text('Put a covid-19 stat. image carousel here'),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: GridView.count(
+                      crossAxisCount: 3,
+                      mainAxisSpacing: 10,
+                      crossAxisSpacing: 10,
+                      primary: false,
+                      children: <Widget>[
+                        InkWell(
+                          splashColor: Colors.grey,
+                          highlightColor: Colors.grey,
+                          onTap: () {
+                            setState(() {
+                              print('hello world');
+                            });
+                          },
+                          child: Card(
+                            elevation: 4,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
+                            ),
+                            child: Column(
+                              children: <Widget>[
+                                SvgPicture.network(
+                                  'https://image.flaticon.com/icons/svg/2422/2422792.svg',
+                                  height: 85,
+                                ),
+                                Text('Rising EPS'),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Card(
+                          elevation: 4,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Column(
+                            children: <Widget>[
+                              SvgPicture.network(
+                                'https://image.flaticon.com/icons/svg/3428/3428402.svg',
+                                height: 85,
+                              ),
+                              Text('Weed Stocks'),
+                            ],
+                          ),
+                        ),
+                        Card(
+                          elevation: 4,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Column(
+                            children: <Widget>[
+                              SvgPicture.network(
+                                'https://image.flaticon.com/icons/svg/3121/3121773.svg',
+                                height: 85,
+                              ),
+                              Text('Falling EPS'),
+                            ],
+                          ),
+                        ),
+                        Card(
+                          elevation: 4,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Column(
+                            children: <Widget>[
+                              SvgPicture.network(
+                                'https://image.flaticon.com/icons/svg/3121/3121690.svg',
+                                height: 85,
+                              ),
+                              Text('Resis/Supp'),
+                            ],
+                          ),
+                        ),
+                        Card(
+                          elevation: 4,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Column(
+                            children: <Widget>[
+                              SvgPicture.network(
+                                'https://image.flaticon.com/icons/svg/2586/2586226.svg',
+                                height: 85,
+                              ),
+                              Text('Agg. Indicators'),
+                            ],
+                          ),
+                        ),
+                        Card(
+                          elevation: 4,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Column(
+                            children: <Widget>[
+                              SvgPicture.network(
+                                'https://image.flaticon.com/icons/svg/831/831273.svg',
+                                height: 85,
+                              ),
+                              Text('Tech. Indicators'),
+                            ],
+                          ),
+                        ),
+                        Card(
+                          elevation: 4,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Column(
+                            children: <Widget>[
+                              SvgPicture.network(
+                                'https://image.flaticon.com/icons/svg/3428/3428402.svg',
+                                height: 85,
+                              ),
+                              Text('Weed Stocks'),
+                            ],
+                          ),
+                        ),
+                        Card(
+                          elevation: 4,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Column(
+                            children: <Widget>[
+                              SvgPicture.network(
+                                'https://image.flaticon.com/icons/svg/3121/3121773.svg',
+                                height: 85,
+                              ),
+                              Text('Falling EPS'),
+                            ],
+                          ),
+                        ),
+                        Card(
+                          elevation: 4,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Column(
+                            children: <Widget>[
+                              SvgPicture.network(
+                                'https://image.flaticon.com/icons/svg/3121/3121690.svg',
+                                height: 85,
+                              ),
+                              Text('Resis/Supp'),
+                            ],
+                          ),
+                        ),
+                        Card(
+                          elevation: 4,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Column(
+                            children: <Widget>[
+                              SvgPicture.network(
+                                'https://image.flaticon.com/icons/svg/2586/2586226.svg',
+                                height: 85,
+                              ),
+                              Text('Agg. Indicators'),
+                            ],
+                          ),
+                        ),
+                        Card(
+                          elevation: 4,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Column(
+                            children: <Widget>[
+                              SvgPicture.network(
+                                'https://image.flaticon.com/icons/svg/831/831273.svg',
+                                height: 85,
+                              ),
+                              Text('Tech. Indicators'),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
+    ); //end scaffold
+  } //end of build
+} //end of extends class
+
+/*
     print("get data called");
     StockProfile Apple = new StockProfile('AAPL');
     print(Apple.openPrice);
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Market Watch Dog',
-      theme: ThemeData(
-        primarySwatch: Colors.green,
-      ),
-      home: HomeScreenContents(title: 'Market Charts'),
-    );
-  }
-}
-
-class HomeScreenContents extends StatefulWidget {
-  HomeScreenContents({Key key, this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _HomeScreenContentsState createState() => _HomeScreenContentsState();
-}
-
-class _HomeScreenContentsState extends State<HomeScreenContents> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-          child: ListView(
-        children: <Widget>[
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              StockCard(
-                stockTicker: "AAPL",
-              ),
-              StockCard(
-                stockTicker: "ticker 2",
-              ),
-              StockCard(
-                stockTicker: "ticker 3",
-              ),
-              StockCard(
-                stockTicker: "ticker 4",
-              ),
-              StockCard(
-                stockTicker: "ticker 5",
-              ),
-            ],
-          ),
-        ],
-      )),
-    );
-  }
-}
+    StockFinancials test = StockFinancials('AAPL');
+    test.getData('AAPL');
+ */
