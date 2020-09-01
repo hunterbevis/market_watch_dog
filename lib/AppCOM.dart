@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'screens/HomeScreen.dart';
+import 'screens/Rising_EPS.dart';
 
 //This is the App's Center of Command (aka COM)!
 //Just define routes here and control initial route
@@ -17,6 +18,7 @@ class _AppCOMState extends State<AppCOM> {
       initialRoute: HomeScreen.screenID,
       routes: {
         HomeScreen.screenID: (context) => HomeScreen(),
+        RisingEPSScreen.screenID: (context) => RisingEPSScreen(),
       },
     );
   }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:marketwatchdog/components/stockCard.dart';
+import 'package:marketwatchdog/screens/Rising_EPS.dart';
 import 'package:marketwatchdog/services/stockAPI.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -58,180 +58,75 @@ class _HomeScreenState extends State<HomeScreen> {
                       crossAxisSpacing: 10,
                       primary: false,
                       children: <Widget>[
-                        InkWell(
-                          splashColor: Colors.grey,
-                          highlightColor: Colors.grey,
-                          onTap: () {
-                            setState(() {
-                              print('hello world');
-                            });
-                          },
-                          child: Card(
-                            elevation: 4,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Column(
-                              children: <Widget>[
-                                SvgPicture.network(
-                                  'https://image.flaticon.com/icons/svg/2422/2422792.svg',
-                                  height: 85,
-                                ),
-                                Text('Rising EPS'),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Card(
-                          elevation: 4,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Column(
-                            children: <Widget>[
-                              SvgPicture.network(
-                                'https://image.flaticon.com/icons/svg/3428/3428402.svg',
-                                height: 85,
-                              ),
-                              Text('Weed Stocks'),
-                            ],
-                          ),
-                        ),
-                        Card(
-                          elevation: 4,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Column(
-                            children: <Widget>[
-                              SvgPicture.network(
-                                'https://image.flaticon.com/icons/svg/3121/3121773.svg',
-                                height: 85,
-                              ),
-                              Text('Falling EPS'),
-                            ],
-                          ),
-                        ),
-                        Card(
-                          elevation: 4,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Column(
-                            children: <Widget>[
-                              SvgPicture.network(
-                                'https://image.flaticon.com/icons/svg/3121/3121690.svg',
-                                height: 85,
-                              ),
-                              Text('Resis/Supp'),
-                            ],
-                          ),
-                        ),
-                        Card(
-                          elevation: 4,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Column(
-                            children: <Widget>[
-                              SvgPicture.network(
-                                'https://image.flaticon.com/icons/svg/2586/2586226.svg',
-                                height: 85,
-                              ),
-                              Text('Agg. Indicators'),
-                            ],
-                          ),
-                        ),
-                        Card(
-                          elevation: 4,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Column(
-                            children: <Widget>[
-                              SvgPicture.network(
-                                'https://image.flaticon.com/icons/svg/831/831273.svg',
-                                height: 85,
-                              ),
-                              Text('Tech. Indicators'),
-                            ],
-                          ),
-                        ),
-                        Card(
-                          elevation: 4,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Column(
-                            children: <Widget>[
-                              SvgPicture.network(
-                                'https://image.flaticon.com/icons/svg/3428/3428402.svg',
-                                height: 85,
-                              ),
-                              Text('Weed Stocks'),
-                            ],
-                          ),
-                        ),
-                        Card(
-                          elevation: 4,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Column(
-                            children: <Widget>[
-                              SvgPicture.network(
-                                'https://image.flaticon.com/icons/svg/3121/3121773.svg',
-                                height: 85,
-                              ),
-                              Text('Falling EPS'),
-                            ],
-                          ),
-                        ),
-                        Card(
-                          elevation: 4,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Column(
-                            children: <Widget>[
-                              SvgPicture.network(
-                                'https://image.flaticon.com/icons/svg/3121/3121690.svg',
-                                height: 85,
-                              ),
-                              Text('Resis/Supp'),
-                            ],
-                          ),
-                        ),
-                        Card(
-                          elevation: 4,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Column(
-                            children: <Widget>[
-                              SvgPicture.network(
-                                'https://image.flaticon.com/icons/svg/2586/2586226.svg',
-                                height: 85,
-                              ),
-                              Text('Agg. Indicators'),
-                            ],
-                          ),
-                        ),
-                        Card(
-                          elevation: 4,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8),
-                          ),
-                          child: Column(
-                            children: <Widget>[
-                              SvgPicture.network(
-                                'https://image.flaticon.com/icons/svg/831/831273.svg',
-                                height: 85,
-                              ),
-                              Text('Tech. Indicators'),
-                            ],
-                          ),
-                        ),
+                        buildInkWell(
+                            cardText: 'Rising EPS',
+                            iconHTTPLink: 'https://image.flaticon'
+                                '.com/icons/svg/2422/2422792.svg',
+                            screenID: RisingEPSScreen.screenID),
+                        buildInkWell(
+                            cardText: 'Weed Stocks',
+                            iconHTTPLink: 'https://image.flaticon'
+                                '.com/icons/svg/3428/3428402.svg',
+                            screenID: 'Weed Stocks screen'),
+                        buildInkWell(
+                            cardText: 'Falling EPS',
+                            iconHTTPLink: 'https://image.flaticon'
+                                '.com/icons/svg/3121/3121773.svg',
+                            screenID: 'falling eps screen'),
+                        buildInkWell(
+                            cardText: 'Resis/Supp',
+                            iconHTTPLink: 'https://image.flaticon.com/icons/svg/3121/3121690.svg',
+                            screenID: 'Resis/Supp'),
+                        buildInkWell(
+                            cardText: 'Agg. Indicators',
+                            iconHTTPLink: 'https://image.flaticon'
+                                '.com/icons/svg/2586/2586226.svg',
+                            screenID: 'Agg. Indicators screen'),
+                        buildInkWell(
+                            cardText: 'Tech. Indicators',
+                            iconHTTPLink: 'https://image.flaticon'
+                                '.com/icons/svg/831/831273.svg',
+                            screenID: 'Tech. Indicators screen'),
+                        buildInkWell(
+                            cardText: 'Rising EPS',
+                            iconHTTPLink: 'https://image.flaticon'
+                                '.com/icons/svg/2422/2422792.svg',
+                            screenID: 'hello world'),
+                        buildInkWell(
+                            cardText: 'Weed Stocks',
+                            iconHTTPLink: 'https://image.flaticon'
+                                '.com/icons/svg/3428/3428402.svg',
+                            screenID: 'Weed Stocks screen'),
+                        buildInkWell(
+                            cardText: 'Falling EPS',
+                            iconHTTPLink: 'https://image.flaticon'
+                                '.com/icons/svg/3121/3121773.svg',
+                            screenID: 'falling eps screen'),
+                        buildInkWell(
+                            cardText: 'Falling EPS',
+                            iconHTTPLink: 'https://image.flaticon'
+                                '.com/icons/svg/3121/3121773.svg',
+                            screenID: 'falling eps screen'),
+                        buildInkWell(
+                            cardText: 'Falling EPS',
+                            iconHTTPLink: 'https://image.flaticon'
+                                '.com/icons/svg/3121/3121773.svg',
+                            screenID: 'falling eps screen'),
+                        buildInkWell(
+                            cardText: 'Falling EPS',
+                            iconHTTPLink: 'https://image.flaticon'
+                                '.com/icons/svg/3121/3121773.svg',
+                            screenID: 'falling eps screen'),
+                        buildInkWell(
+                            cardText: 'Falling EPS',
+                            iconHTTPLink: 'https://image.flaticon'
+                                '.com/icons/svg/3121/3121773.svg',
+                            screenID: 'falling eps screen'),
+                        buildInkWell(
+                            cardText: 'Falling EPS',
+                            iconHTTPLink: 'https://image.flaticon'
+                                '.com/icons/svg/3121/3121773.svg',
+                            screenID: 'falling eps screen'),
                       ],
                     ),
                   ),
@@ -242,6 +137,38 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
     ); //end scaffold
+  }
+
+  InkWell buildInkWell({String cardText, String iconHTTPLink, String screenID}) {
+    final String iconText = cardText;
+    final String iconLink = iconHTTPLink;
+    final String nextScreen = screenID;
+
+    return InkWell(
+      splashColor: Colors.grey,
+      highlightColor: Colors.grey,
+      onTap: () {
+        setState(() {
+          print(nextScreen);
+          Navigator.pushNamed(context, nextScreen);
+        });
+      },
+      child: Card(
+        elevation: 4,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
+        child: Column(
+          children: <Widget>[
+            SvgPicture.network(
+              iconLink,
+              height: 85,
+            ),
+            Text(iconText),
+          ],
+        ),
+      ),
+    );
   } //end of build
 } //end of extends class
 
