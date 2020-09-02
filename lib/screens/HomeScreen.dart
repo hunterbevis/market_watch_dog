@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:marketwatchdog/screens/Rising_EPS.dart';
 import 'package:marketwatchdog/services/stockAPI.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+
+//Screen Imports For Navigation
+import 'package:marketwatchdog/screens/Rising_EPS_Screen.dart';
+import 'package:marketwatchdog/screens/Falling_EPS_Screen.dart';
+import 'package:marketwatchdog/screens/Resistance_Support_Screen.dart';
+import 'package:marketwatchdog/screens/Aggregate_Indicators_Screen.dart';
+import 'package:marketwatchdog/screens/Technical_Indicators_Screen.dart';
 
 class HomeScreen extends StatefulWidget {
   // This widget is the root of your application.
@@ -42,7 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: <Widget>[
                   Container(
                     margin: EdgeInsets.only(bottom: size.height * .20),
-                    height: 64,
+                    height: size.height * .1,
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
@@ -60,73 +66,39 @@ class _HomeScreenState extends State<HomeScreen> {
                       children: <Widget>[
                         buildInkWell(
                             cardText: 'Rising EPS',
+                            mediaSize: size,
                             iconHTTPLink: 'https://image.flaticon'
                                 '.com/icons/svg/2422/2422792.svg',
                             screenID: RisingEPSScreen.screenID),
                         buildInkWell(
                             cardText: 'Weed Stocks',
+                            mediaSize: size,
                             iconHTTPLink: 'https://image.flaticon'
                                 '.com/icons/svg/3428/3428402.svg',
                             screenID: 'Weed Stocks screen'),
                         buildInkWell(
                             cardText: 'Falling EPS',
+                            mediaSize: size,
                             iconHTTPLink: 'https://image.flaticon'
                                 '.com/icons/svg/3121/3121773.svg',
-                            screenID: 'falling eps screen'),
+                            screenID: FallingEPSScreen.screenID),
                         buildInkWell(
                             cardText: 'Resis/Supp',
+                            mediaSize: size,
                             iconHTTPLink: 'https://image.flaticon.com/icons/svg/3121/3121690.svg',
-                            screenID: 'Resis/Supp'),
+                            screenID: ResistanceSupportScreen.screenID),
                         buildInkWell(
                             cardText: 'Agg. Indicators',
+                            mediaSize: size,
                             iconHTTPLink: 'https://image.flaticon'
                                 '.com/icons/svg/2586/2586226.svg',
-                            screenID: 'Agg. Indicators screen'),
+                            screenID: AggregateIndicatorsScreen.screenID),
                         buildInkWell(
                             cardText: 'Tech. Indicators',
+                            mediaSize: size,
                             iconHTTPLink: 'https://image.flaticon'
                                 '.com/icons/svg/831/831273.svg',
-                            screenID: 'Tech. Indicators screen'),
-                        buildInkWell(
-                            cardText: 'Rising EPS',
-                            iconHTTPLink: 'https://image.flaticon'
-                                '.com/icons/svg/2422/2422792.svg',
-                            screenID: 'hello world'),
-                        buildInkWell(
-                            cardText: 'Weed Stocks',
-                            iconHTTPLink: 'https://image.flaticon'
-                                '.com/icons/svg/3428/3428402.svg',
-                            screenID: 'Weed Stocks screen'),
-                        buildInkWell(
-                            cardText: 'Falling EPS',
-                            iconHTTPLink: 'https://image.flaticon'
-                                '.com/icons/svg/3121/3121773.svg',
-                            screenID: 'falling eps screen'),
-                        buildInkWell(
-                            cardText: 'Falling EPS',
-                            iconHTTPLink: 'https://image.flaticon'
-                                '.com/icons/svg/3121/3121773.svg',
-                            screenID: 'falling eps screen'),
-                        buildInkWell(
-                            cardText: 'Falling EPS',
-                            iconHTTPLink: 'https://image.flaticon'
-                                '.com/icons/svg/3121/3121773.svg',
-                            screenID: 'falling eps screen'),
-                        buildInkWell(
-                            cardText: 'Falling EPS',
-                            iconHTTPLink: 'https://image.flaticon'
-                                '.com/icons/svg/3121/3121773.svg',
-                            screenID: 'falling eps screen'),
-                        buildInkWell(
-                            cardText: 'Falling EPS',
-                            iconHTTPLink: 'https://image.flaticon'
-                                '.com/icons/svg/3121/3121773.svg',
-                            screenID: 'falling eps screen'),
-                        buildInkWell(
-                            cardText: 'Falling EPS',
-                            iconHTTPLink: 'https://image.flaticon'
-                                '.com/icons/svg/3121/3121773.svg',
-                            screenID: 'falling eps screen'),
+                            screenID: TechnicalIndicatorsScreen.screenID),
                       ],
                     ),
                   ),
@@ -139,10 +111,11 @@ class _HomeScreenState extends State<HomeScreen> {
     ); //end scaffold
   }
 
-  InkWell buildInkWell({String cardText, String iconHTTPLink, String screenID}) {
+  InkWell buildInkWell({String cardText, String iconHTTPLink, String screenID, Size mediaSize}) {
     final String iconText = cardText;
     final String iconLink = iconHTTPLink;
     final String nextScreen = screenID;
+    final double screenSize = mediaSize.height;
 
     return InkWell(
       splashColor: Colors.grey,
@@ -160,11 +133,19 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         child: Column(
           children: <Widget>[
-            SvgPicture.network(
-              iconLink,
-              height: 85,
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+              child: SvgPicture.network(
+                iconLink,
+                height: screenSize * .10,
+              ),
             ),
-            Text(iconText),
+            FittedBox(
+              child: Text(
+                iconText,
+                style: TextStyle(fontSize: screenSize * .025),
+              ),
+            ),
           ],
         ),
       ),
